@@ -1,9 +1,8 @@
 import React from "react";
-import { useTheme } from "../../context/ThemeContext";
+import { Link } from "react-router-dom";
 import ThemeToggle from "./ThemeToggle";
 import ShineBorder from "./magicui/shine-border";
 import { Button } from "./button";
-
 
 const Navbar = () => {
     const { isDarkMode } = useTheme();
