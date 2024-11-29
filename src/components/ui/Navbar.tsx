@@ -1,68 +1,40 @@
 import React from "react";
 import { useTheme } from "../../context/ThemeContext";
 import ThemeToggle from "./ThemeToggle";
+import ShineBorder from "./magicui/shine-border";
+import { Button } from "./button";
 
 
 const Navbar = () => {
+    const { isDarkMode } = useTheme();
+
     return (
-        
-        <div className="navbar rounded-badge bg-[var(--navbar-color)] w-1/2 mx-auto backdrop-blur-md shadow-lg">
-            <div className="navbar-start">
-                <div className="dropdown">
-                    <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            className="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth="2"
-                                d="M4 6h16M4 12h8m-8 6h16" />
-                        </svg>
-                    </div>
-                    <ul
-                        tabIndex={0}
-                        className="menu menu-sm dropdown-content bg-[var(--card)] rounded-box z-[1] mt-3 w-52 p-2 shadow">
-                        <li><a>Home</a></li>
-                        <li>
-                            <a>Non Profits</a>
-                            <ul className="p-2">
-                                <li><a>Submenu 1</a></li>
-                                <li><a>Submenu 2</a></li>
-                            </ul>
-                        </li>
-                        <li><a>Login In</a></li>
-                        <li><a>Sign Up</a></li>
-                    </ul>
+        <div className="mx-auto rounded-badge w-fit bg-[var(--navbar-color)] backdrop-blur-md z-50"
+      style={{
+        boxShadow: isDarkMode
+          ? "0 4px 6px rgba(255, 255, 255, 0.2)" // White shadow for dark mode
+          : "0 4px 6px rgba(0, 0, 0, 0.2)", // Default shadow for light mode
+      }}>
+            <div className="mx-auto flex items-center justify-between px-4 py-3">
+
+                {/* Buttons */}
+                <div className="flex gap-4">
+                    <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
+                        Home
+                    </Button>
+                    <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
+                        Non Profits
+                    </Button>
+                    <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
+                        Join
+                    </Button>
+                    <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
+                        Log In
+                    </Button>
+                    <ThemeToggle/>
                 </div>
-                <a className="btn btn-ghost text-xl">NGONERS</a>
             </div>
-            <div className="navbar-center hidden lg:flex">
-                <ul className="menu menu-horizontal px-1">
-                    <li><a>Home</a></li>
-                    <li>
-                        <details>
-                            <summary>Non Profits</summary>
-                            <ul className="m-2 bg-[var(--card)] py-2 px-4">
-                                <li className="py-1"><a>Submenu 1</a></li>
-                                <li className="py-1"><a>Submenu 2</a></li>
-                            </ul>
-                        </details>
-                    </li>
-                    <li><a>Login In</a></li>
-                    <li><a>Sign Up</a></li>
-                </ul>
-            </div>
-
-            <div className="mr-3 ml-auto">   
-                <ThemeToggle />
-            </div>
-
         </div>
-
     );
 };
 

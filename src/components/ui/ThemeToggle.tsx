@@ -5,7 +5,8 @@ const ThemeToggle = () => {
     const { isDarkMode, toggleTheme } = useTheme();
 
     return (
-        <label className="swap swap-rotate">
+        <label className="swap swap-rotate rounded-3xl p-2 hover:bg-pink-100 dark:hover:bg-gray-500">
+            
             
             <input
                 type="checkbox"
