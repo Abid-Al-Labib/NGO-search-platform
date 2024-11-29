@@ -1,56 +1,73 @@
 // src/pages/SearchResults.tsx
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import Navbar from '@/components/ui/Navbar';
-import SearchResultCard from '@/components/ui/SearchResultCard';
+import SearchResultCard from '@/components/SearchResultCard';
+
+interface SearchResult {
+  id: number;
+  title: string;
+  description: string;
+  imageUrl: string;
+}
+
 
 const SearchResults = () => {
   const location = useLocation();
-  const [results, setResults] = useState([]);
-  const query = new URLSearchParams(location.search).get('q');
+  const [results, setResults] = useState<SearchResult[]>([]);
+
+  const [searchParams] = useSearchParams();
+  const query = searchParams.get("query");
 
   useEffect(() => {
-    // Replace with your data fetching logic
-    // For demonstration, we'll use dummy data
-    const fetchResults = () => {
-      const dummyResults = [
-        {
-          id: 1,
-          title: 'Result Title 1',
-          description: 'This is a description for result 1.',
-          imageUrl: 'https://via.placeholder.com/150',
-        },
-        {
-          id: 2,
-          title: 'Result Title 2',
-          description: 'This is a description for result 2.',
-          imageUrl: 'https://via.placeholder.com/150',
-        },
-        // Add more results as needed
-      ];
-      setResults(dummyResults);
-    };
+    // Dummy data fetching
+    const dummyResults: SearchResult[] = [
+      {
+        id: 1,
+        title: "Flood Relief in Rajshahi",
+        description: "Details about flood relief efforts in Rajshahi.",
+        imageUrl: "https://via.placeholder.com/150",
+      },
+      {
+        id: 2,
+        title: "Clothes Donation Drive",
+        description: "Help provide warm clothes to those in need.",
+        imageUrl: "https://via.placeholder.com/150",
+      },
+      {
+        id: 3,
+        title: "Local Community Cleanup",
+        description: "Join us to clean up parks and public spaces.",
+        imageUrl: "https://via.placeholder.com/150",
+      },
+    ];
 
-    fetchResults();
+    setResults(dummyResults); // Simulate API response
   }, [query]);
 
   return (
     <div  className="min-h-screen bg-background text-foreground">
-      <Navbar />
+      <div className="pt-2">
+        <Navbar />
+      </div>
+      
+      {/* Search Results Section */}
       <div className="container mx-auto py-8 px-4">
         <h1 className="text-2xl font-bold mb-6">
           Search Results for "{query}"
         </h1>
-        <div className="flex flex-col">
+
+        <div className="flex flex-col gap-4">
           {results.length > 0 ? (
             results.map((result) => (
               <SearchResultCard key={result.id} result={result} />
             ))
           ) : (
-            <p>No results found.</p>
+            <p className="text-gray-500">No results found.</p>
           )}
         </div>
       </div>
+      
     </div>
   );
 };

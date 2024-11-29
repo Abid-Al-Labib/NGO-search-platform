@@ -19,18 +19,26 @@ const Navbar = () => {
 
                 {/* Buttons */}
                 <div className="flex gap-4">
-                    <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
-                        Home
-                    </Button>
-                    <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
-                        Non Profits
-                    </Button>
-                    <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
-                        Join
-                    </Button>
-                    <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
-                        Log In
-                    </Button>
+                    <Link to="/">
+                        <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
+                            Home
+                        </Button>
+                    </Link>
+                    <Link to="/non-profits">
+                        <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
+                            Non Profits
+                        </Button>
+                    </Link>
+                    <Link to="/join">
+                        <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
+                            Join
+                        </Button>
+                    </Link>
+                    <Link to="/login">
+                        <Button className="px-4 py-2 text-sm font-medium text-foreground bg-transparent rounded-3xl">
+                            Log In
+                        </Button>
+                    </Link>
                     <ThemeToggle/>
                 </div>
             </div>

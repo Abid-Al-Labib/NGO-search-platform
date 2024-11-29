@@ -9,6 +9,7 @@ export interface MagicCardProps extends React.HTMLAttributes<HTMLDivElement> {
   gradientSize?: number;
   gradientColor?: string;
   gradientOpacity?: number;
+  bg?: string;
 }
 
 export function MagicCard({
@@ -17,6 +18,7 @@ export function MagicCard({
   gradientSize = 200,
   gradientColor = "#262626",
   gradientOpacity = 0.8,
+  bg = "neutral-100"
 }: MagicCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const mouseX = useMotionValue(-gradientSize);
@@ -73,9 +75,10 @@ export function MagicCard({
     <div
       ref={cardRef}
       className={cn(
-        "group relative flex size-full overflow-hidden rounded-xl bg-neutral-100 dark:bg-neutral-900 border border-slate-200 text-black dark:text-white dark:border-slate-800",
+        "group relative flex size-full overflow-hidden rounded-xl bg-[var(--card)] border border-slate-200 text-black dark:text-white dark:border-slate-800",
         className,
       )}
+      
     >
       <div className="relative z-10">{children}</div>
       <motion.div

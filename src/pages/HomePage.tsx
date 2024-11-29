@@ -22,7 +22,6 @@ const HomePage = () => {
       </div>
 
       {/* Main Section */}
-      <div className="flex-grow flex items-center justify-center relative">
         <Particles
           className="absolute inset-0 z-0"
           quantity={100}
@@ -30,6 +29,11 @@ const HomePage = () => {
           color={isDarkMode ? "#ffffff" : "#000000"}
           refresh
         />
+      <div className="flex-grow flex flex-col items-center relative justify-start pt-96">
+        {/* NGONERS Header */}
+        <h1 className="text-6xl font-bold tracking-wide mb-8 text-center z-10 italicized">
+          NGONERS
+        </h1>
 
       {/* Input Field with ShineBorder */}
         <div className="flex justify-center items-center w-1/3 relative h-16">
@@ -50,12 +54,6 @@ const HomePage = () => {
               height: "calc(100% - 5px)", // Matches height adjustment if needed
             }}>
             <SearchBar
-              texts={[
-                "Trending Topics:",
-                "Flooding in Rajshahi",
-                "Warm Clothes Donation in Dhanmondi",
-                "Beat Tahsin up",
-              ]}
               onSearch={(value) => console.log("Search input:", value)}
               className="w-full h-full rounded-[24px] bg-[var(--card)] focus:outline-none" // Matches ShineBorder dimensions
             />

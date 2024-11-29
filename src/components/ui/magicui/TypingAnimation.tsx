@@ -10,7 +10,7 @@ interface TypingAnimationProps {
 
 const TypingAnimation: React.FC<TypingAnimationProps> = ({
   texts,
-  typingSpeed = 150,
+  typingSpeed = 400,
   pauseDuration = 2000,
   loop = true,
   className = "text-base",
